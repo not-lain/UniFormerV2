@@ -24,7 +24,7 @@ setup(
         "pandas",
         "torchvision>=0.4.2",
         "pillow",
-        "sklearn",
+        "scikit-learn",
         "tensorboard",
         "timm",
         "huggingface_hub>=0.22"
