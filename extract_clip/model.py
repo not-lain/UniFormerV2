@@ -5,7 +5,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from torch import nn
-
+from huggingface_hub import PyTorchModelHubMixin
 
 class Bottleneck(nn.Module):
     expansion = 4
@@ -203,7 +203,11 @@ class Transformer(nn.Module):
         return self.resblocks(x)
 
 
-class VisionTransformer(nn.Module):
+class VisionTransformer(nn.Module,
+                        PyTorchModelHubMixin,
+                        library_name ="UniFormerV2",
+                        repo_url = "https://github.com/OpenGVLab/UniFormerV2"
+                        ):
     def __init__(self, input_resolution: int, patch_size: int, width: int, layers: int, heads: int, output_dim: int):
         super().__init__()
         self.input_resolution = input_resolution

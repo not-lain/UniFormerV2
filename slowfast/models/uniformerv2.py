@@ -2,6 +2,7 @@
 import json
 import torch
 import torch.nn as nn
+from huggingface_hub import PyTorchModelHubMixin
 
 import slowfast.models.uniformerv2_model as model
 from .build import MODEL_REGISTRY
@@ -12,7 +13,11 @@ logger = logging.get_logger(__name__)
 
 
 @MODEL_REGISTRY.register()
-class Uniformerv2(nn.Module):
+class Uniformerv2(nn.Module,
+                PyTorchModelHubMixin,
+                library_name ="UniFormerV2",
+                repo_url = "https://github.com/OpenGVLab/UniFormerV2"
+                ):
     def __init__(self, cfg):
         super().__init__()
 

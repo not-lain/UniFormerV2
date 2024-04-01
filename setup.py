@@ -26,7 +26,8 @@ setup(
         "pillow",
         "sklearn",
         "tensorboard",
-        "timm"
+        "timm",
+        "huggingface_hub>=0.22"
     ],
     extras_require={"tensorboard_video_visualization": ["moviepy"]},
     packages=find_packages(exclude=("configs", "tests")),

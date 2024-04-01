@@ -8,6 +8,7 @@ from torch import nn
 from torch.nn import MultiheadAttention
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
+from huggingface_hub import PyTorchModelHubMixin
 
 
 import slowfast.utils.logging as logging
@@ -274,7 +275,11 @@ class Transformer(nn.Module):
             return self.proj((1 - weight) * cls_token[0, :, :] + weight * residual)
 
 
-class VisionTransformer(nn.Module):
+class VisionTransformer(nn.Module,
+                        PyTorchModelHubMixin,
+                        library_name ="UniFormerV2",
+                        repo_url = "https://github.com/OpenGVLab/UniFormerV2"
+                        ):
     def __init__(
         self, 
         # backbone
