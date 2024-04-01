@@ -244,7 +244,11 @@ class VisionTransformer(nn.Module,
         return x
 
 
-class CLIP(nn.Module):
+class CLIP(nn.Module,
+            PyTorchModelHubMixin,
+            library_name ="UniFormerV2",
+            repo_url = "https://github.com/OpenGVLab/UniFormerV2"
+            ):
     def __init__(self,
                  embed_dim: int,
                  # vision
